@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BMW M4 Competition</title>
+<meta name="description" content="Search any BMW model and explore its details.">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/favicon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+<link rel="stylesheet" href="css/style.css?v=4">
+<link rel="stylesheet" href="css/sections.css?v=3">
+<link rel="preload" as="image" href="frames/d/0001.jpg" media="(min-width: 768px)">
+<link rel="preload" as="image" href="frames/m/0001.jpg" media="(max-width: 767px)">
+</head>
+<body>
+
+<!-- Loader -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__mark"><span></span><span></span><span></span></div>
+  <div class="loader__count"><span id="loadPct">0</span>%</div>
+  <div class="loader__bar"><i id="loadBar"></i></div>
+</div>
+
+<!-- Header -->
+<header class="nav" id="nav">
+  <a class="nav__logo" href="#top" aria-label="BMW M Finder home">
+    <span class="stripes"><i></i><i></i><i></i></span>
+    <b>BMW</b><em>M&nbsp;FINDER</em>
+  </a>
+  <nav class="nav__links" id="navLinks" aria-label="Main">
+    <a href="#overview">Overview</a>
+    <a href="#performance">Performance</a>
+    <a href="#design">Design</a>
+    <a href="#colours">Colours</a>
+    <a href="#specs">Specs</a>
+  </nav>
+  <a class="nav__cta" href="#contact">Test drive</a>
+  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<main id="top">
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero" aria-label="BMW M4 scroll experience">
+    <div class="stage" id="stage">
+      <canvas class="stage__canvas" id="canvas"></canvas>
+      <div class="stage__shade"></div>
+      <div class="stage__grain"></div>
+
+      <!-- Scene 1 : intro -->
+      <div class="scene scene--intro" data-from="0" data-to="0.12" data-hold-start>
+        <p class="eyebrow"><span class="dot"></span>The new BMW M4 Competition</p>
+        <h1 class="title title--xl">
+          <span class="line"><span>Pure</span></span>
+          <span class="line"><span class="accent">Power.</span></span>
+        </h1>
+        <p class="lead">Scroll to ignite the machine.</p>
+      </div>
+
+      <!-- Scene 2 : headlights -->
+      <div class="scene scene--left scene--low" data-from="0.14" data-to="0.28">
+        <p class="eyebrow"><span class="num">01</span>Light design</p>
+        <h2 class="title">
+          <span class="line"><span>See the road</span></span>
+          <span class="line"><span class="accent">first.</span></span>
+        </h2>
+        <p class="lead">Sharp LED eyes with the hexagonal M signature, built to cut through the dark.</p>
+      </div>
+
+      <!-- Scene 3 : stats -->
+      <div class="scene scene--right" data-from="0.30" data-to="0.42">
+        <p class="eyebrow"><span class="num">02</span>Performance</p>
+        <h2 class="title">
+          <span class="line"><span>Six cylinders.</span></span>
+          <span class="line"><span class="accent">Zero mercy.</span></span>
+        </h2>
+        <ul class="stats">
+          <li><b data-count="510">0</b><small>PS output</small></li>
+          <li><b data-count="3.9" data-dec="1">0</b><small>sec 0–100 km/h</small></li>
+          <li><b data-count="650">0</b><small>Nm torque</small></li>
+        </ul>
+      </div>
+
+      <!-- Scene 4 : badge -->
+      <div class="scene scene--right" data-from="0.44" data-to="0.55">
+        <p class="eyebrow"><span class="num">03</span>Heritage</p>
+        <h2 class="title">
+          <span class="line"><span>Born in</span></span>
+          <span class="line"><span class="accent">Munich.</span></span>
+        </h2>
+        <p class="lead">Over a century of engineering, worn proudly on the bonnet.</p>
+      </div>
+
+      <!-- Scene 5 : grille -->
+      <div class="scene scene--left scene--low" data-from="0.57" data-to="0.70">
+        <p class="eyebrow"><span class="num">04</span>Signature face</p>
+        <h2 class="title">
+          <span class="line"><span>Face the</span></span>
+          <span class="line"><span class="accent">future.</span></span>
+        </h2>
+        <p class="lead">The vertical M kidney grille feeds air straight to the heart of the car.</p>
+      </div>
+
+      <!-- Scene 6 : search -->
+      <div class="scene scene--final" id="search" data-from="0.76" data-to="1" data-hold-end>
+        <p class="eyebrow"><span class="dot"></span>Every model. Every detail.</p>
+        <h2 class="title title--xl">
+          <span class="line"><span>Find your</span></span>
+          <span class="line"><span class="accent">BMW.</span></span>
+        </h2>
+        <div class="search-wrap">
+          <form class="search" id="searchForm" role="search" autocomplete="off">
+            <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input id="searchInput" type="search" placeholder="Search a model, e.g. M4, X5, i7" aria-label="Search BMW models" aria-controls="searchList">
+            <button type="submit">Search</button>
+          </form>
+          <ul class="search-drop" id="searchList" role="listbox" hidden></ul>
+        </div>
+        <div class="chips" id="chips">
+          <button type="button">M2</button><button type="button">M3</button><button type="button">M4</button>
+          <button type="button">M5</button><button type="button">X5 M</button><button type="button">i7</button>
+        </div>
+      </div>
+
+      <!-- HUD -->
+      <div class="hud">
+        <div class="hud__count"><b id="hudNum">01</b><span>/ 06</span></div>
+        <div class="hud__track"><i id="hudBar"></i></div>
+      </div>
+      <div class="scroll-hint" id="scrollHint"><span>Scroll</span><i></i></div>
+    </div>
+  </section>
+
+  <!-- ============ OVERVIEW ============ -->
+  <section class="ov" id="overview">
+    <div class="ov__word" aria-hidden="true"><span>M4</span></div>
+    <div class="wrap ov__grid">
+      <div class="ov__copy">
+        <p class="kicker"><span class="kicker__n">01</span>Overview</p>
+        <h2 class="h2">
+          <span class="ln"><span>Built for</span></span>
+          <span class="ln"><span>the track.</span></span>
+          <span class="ln"><span class="y">Made for</span></span>
+          <span class="ln"><span class="y">the road.</span></span>
+        </h2>
+        <p class="body rv">The BMW M4 Competition Coupé (G82) takes everything M learned on the circuit and puts it in a car you can drive every day. Shown here in São Paulo Yellow, the colour it was launched in.</p>
+        <ul class="ov__facts rv">
+          <li><b>S58</b><span>3.0-litre M TwinPower Turbo straight-six</span></li>
+          <li><b>RWD</b><span>Rear-wheel drive with Active M Differential</span></li>
+          <li><b>8-speed</b><span>M Steptronic with Drivelogic</span></li>
+        </ul>
+      </div>
+      <div class="ov__media">
+        <figure class="ov__img clip"><img src="img/front-34.jpg" alt="BMW M4 Competition in São Paulo Yellow, front three-quarter view" class="par" loading="lazy" width="2000" height="1500"></figure>
+        <figure class="ov__img2 clip" data-speed="-.18"><img src="img/track-front.jpg" alt="BMW M4 Competition on track, front view" class="par" loading="lazy" width="822" height="546"></figure>
+        <div class="ov__tag" data-speed=".12"><i></i><span>São Paulo Yellow</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="mq" aria-hidden="true">
+    <div class="mq__row"><div class="mq__track">
+      <span>M4 Competition</span><i class="stripes"><i></i><i></i><i></i></i><span class="o">510 PS</span><i class="stripes"><i></i><i></i><i></i></i>
+      <span>650 Nm</span><i class="stripes"><i></i><i></i><i></i></i><span class="o">3.9 Sec</span><i class="stripes"><i></i><i></i><i></i></i>
+      <span>M4 Competition</span><i class="stripes"><i></i><i></i><i></i></i><span class="o">510 PS</span><i class="stripes"><i></i><i></i><i></i></i>
+      <span>650 Nm</span><i class="stripes"><i></i><i></i><i></i></i><span class="o">3.9 Sec</span><i class="stripes"><i></i><i></i><i></i></i>
+    </div></div>
+  </div>
+
+  <!-- ============ PERFORMANCE ============ -->
+  <section class="perf" id="performance">
+    <div class="perf__pin">
+      <div class="perf__media"><img src="img/engine.jpg" alt="BMW M TwinPower Turbo S58 engine bay" loading="lazy" width="1200" height="675"></div>
+      <div class="perf__shade"></div>
+      <div class="perf__head">
+        <p class="kicker"><span class="kicker__n">02</span>Performance</p>
+        <h2 class="h2">
+          <span class="ln"><span>The heart</span></span>
+          <span class="ln"><span class="y">of an athlete.</span></span>
+        </h2>
+      </div>
+      <ul class="perf__stats">
+        <li><b><span data-count="510">0</span></b><small>PS max. output</small><i></i></li>
+        <li><b><span data-count="650">0</span></b><small>Nm max. torque</small><i></i></li>
+        <li><b><span data-count="3.9" data-dec="1">0</span><em>s</em></b><small>0–100 km/h</small><i></i></li>
+        <li><b><span data-count="7200">0</span></b><small>rpm redline</small><i></i></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ ENGINE ============ -->
+  <section class="eng">
+    <div class="wrap eng__grid">
+      <div class="eng__stack">
+        <figure class="eng__a clip"><img src="img/engine-m.jpg" alt="BMW M Power engine cover" class="par" loading="lazy" width="820" height="548"></figure>
+        <figure class="eng__b clip" data-speed="-.22"><img src="img/engine-top.jpg" alt="M4 engine bay from above" class="par" loading="lazy" width="598" height="652"></figure>
+        <figure class="eng__c clip" data-speed=".14"><img src="img/bonnet-open.jpg" alt="M4 Competition with the bonnet open" class="par" loading="lazy" width="820" height="548"></figure>
+      </div>
+      <div class="eng__copy">
+        <p class="kicker"><span class="kicker__n">03</span>S58 engine</p>
+        <h2 class="h2 h2--sm">
+          <span class="ln"><span>Six cylinders.</span></span>
+          <span class="ln"><span class="y">Motorsport DNA.</span></span>
+        </h2>
+        <p class="body rv">The S58 straight-six is also the base of the engine in the BMW M4 GT3 race car. Two mono-scroll turbochargers feed it, and it revs all the way to 7,200 rpm.</p>
+        <ol class="eng__list">
+          <li><span>01</span><div><b>3D-printed cylinder head core</b><p>Allows coolant channels that could not be cast the normal way.</p></div></li>
+          <li><span>02</span><div><b>Forged lightweight crankshaft</b><p>Less rotating mass, so the engine responds faster.</p></div></li>
+          <li><span>03</span><div><b>Track-ready cooling and oil supply</b><p>Built to keep working through hard laps on the circuit.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DESIGN GALLERY (horizontal) ============ -->
+  <section class="gal" id="design">
+    <div class="gal__pin">
+      <div class="gal__track">
+        <div class="gal__intro">
+          <p class="kicker"><span class="kicker__n">04</span>Design</p>
+          <h2 class="h2">
+            <span class="ln"><span>Designed</span></span>
+            <span class="ln"><span>to</span></span>
+            <span class="ln"><span class="y">provoke.</span></span>
+          </h2>
+          <p class="body rv">Wide arches, a vertical kidney grille and a carbon roof. Every line has a job to do.</p>
+          <div class="gal__hint rv"><span>Scroll</span><i></i></div>
+        </div>
+        <figure class="card card--l"><div class="card__img"><img src="img/track-34.jpg" alt="M4 Competition cornering on track" loading="lazy"></div><figcaption><span>01</span>Track stance</figcaption></figure>
+        <figure class="card card--p"><div class="card__img"><img src="img/rear-34.jpg" alt="M4 Competition rear three-quarter" loading="lazy"></div><figcaption><span>02</span>Rear haunches</figcaption></figure>
+        <figure class="card card--l card--low"><div class="card__img"><img src="img/pit-front.jpg" alt="M4 Competition front in the pit lane" loading="lazy"></div><figcaption><span>03</span>The kidney grille</figcaption></figure>
+        <figure class="card card--p"><div class="card__img"><img src="img/wheel.jpg" alt="M forged wheel" loading="lazy"></div><figcaption><span>04</span>M forged wheels</figcaption></figure>
+        <figure class="card card--l"><div class="card__img"><img src="img/road-blur.jpg" alt="M4 Competition driving fast" loading="lazy"></div><figcaption><span>05</span>Built for speed</figcaption></figure>
+        <figure class="card card--p card--low"><div class="card__img"><img src="img/rear-detail.jpg" alt="M4 quad exhaust and rear diffuser" loading="lazy"></div><figcaption><span>06</span>Quad exhaust</figcaption></figure>
+        <figure class="card card--l"><div class="card__img"><img src="img/track-rear.jpg" alt="M4 Competition rear on a circuit" loading="lazy"></div><figcaption><span>07</span>From behind</figcaption></figure>
+        <figure class="card card--p"><div class="card__img"><img src="img/road-front.jpg" alt="M4 Competition on a forest road" loading="lazy"></div><figcaption><span>08</span>Signature lights</figcaption></figure>
+        <figure class="card card--l card--low"><div class="card__img"><img src="img/garage-rear.jpg" alt="M4 Competition rear in a dark garage" loading="lazy"></div><figcaption><span>09</span>After dark</figcaption></figure>
+        <div class="gal__end">
+          <span class="gal__count"><b>09</b>/09</span>
+          <p>Every angle. Same attitude.</p>
+        </div>
+      </div>
+    </div>
+    <div class="gal__bar"><i></i></div>
+  </section>
+
+  <!-- ============ COLOURS ============ -->
+  <section class="col" id="colours">
+    <div class="col__name" aria-hidden="true"><span id="colBig">Yellow</span></div>
+    <div class="wrap">
+      <div class="col__head">
+        <p class="kicker"><span class="kicker__n">05</span>Colours</p>
+        <h2 class="h2 h2--sm">
+          <span class="ln"><span>Pick your</span></span>
+          <span class="ln"><span class="y">colour.</span></span>
+        </h2>
+      </div>
+      <div class="col__stage">
+        <div class="col__frame" id="colFrame">
+          <img src="img/colour-yellow.jpg" alt="M4 Competition in São Paulo Yellow" class="is-on" data-c="yellow" width="1600" height="1067">
+          <img src="img/colour-green.jpg" alt="M4 Competition in Isle of Man Green" data-c="green" loading="lazy" width="1600" height="1067">
+          <img src="img/colour-blue.jpg" alt="M4 Competition in Portimao Blue" data-c="blue" loading="lazy" width="1600" height="1067">
+          <img src="img/colour-red.jpg" alt="M4 Competition in Toronto Red" data-c="red" loading="lazy" width="1600" height="1067">
+          <img src="img/colour-grey.jpg" alt="M4 Competition in Brooklyn Grey" data-c="grey" loading="lazy" width="1600" height="1067">
+          <img src="img/colour-black.jpg" alt="M4 Competition in Sapphire Black" data-c="black" loading="lazy" width="1600" height="1067">
+        </div>
+        <div class="col__ui">
+          <div class="col__label"><small id="colType">Solid paint</small><b id="colName">São Paulo Yellow</b></div>
+          <div class="col__sw" role="radiogroup" aria-label="Paint colour">
+            <button role="radio" aria-checked="true"  class="is-on" data-c="yellow" data-name="São Paulo Yellow" data-big="Yellow" data-type="Solid paint" style="--sw:#d4ef00"></button>
+            <button role="radio" aria-checked="false" data-c="green" data-name="Isle of Man Green" data-big="Green" data-type="Metallic" style="--sw:#1f6a34"></button>
+            <button role="radio" aria-checked="false" data-c="blue"  data-name="Portimao Blue" data-big="Blue" data-type="Metallic" style="--sw:#1d58b4"></button>
+            <button role="radio" aria-checked="false" data-c="red"   data-name="Toronto Red" data-big="Red" data-type="Metallic" style="--sw:#b3141c"></button>
+            <button role="radio" aria-checked="false" data-c="grey"  data-name="Brooklyn Grey" data-big="Grey" data-type="Metallic" style="--sw:#8a8f94"></button>
+            <button role="radio" aria-checked="false" data-c="black" data-name="Sapphire Black" data-big="Black" data-type="Metallic" style="--sw:#141518"></button>
+          </div>
+          <p class="col__note">Colour previews are digital renders for illustration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATEMENT ============ -->
+  <section class="stm">
+    <div class="stm__media"><img src="img/burnout.jpg" alt="BMW M4 Competition drifting with tyre smoke" loading="lazy" width="1280" height="620"></div>
+    <div class="stm__shade"></div>
+    <h2 class="stm__txt">
+      <span class="ln"><span>Sideways is</span></span>
+      <span class="ln"><span class="y">a direction.</span></span>
+    </h2>
+  </section>
+
+  <!-- ============ SPECS ============ -->
+  <section class="spec" id="specs">
+    <div class="wrap spec__grid">
+      <div class="spec__side">
+        <p class="kicker"><span class="kicker__n">06</span>Technical data</p>
+        <h2 class="h2 h2--sm">
+          <span class="ln"><span>The numbers</span></span>
+          <span class="ln"><span class="y">behind it.</span></span>
+        </h2>
+        <p class="spec__foot">M4 Competition Coupé (G82), manufacturer figures. Figures can vary by market.</p>
+      </div>
+      <div class="spec__tables">
+        <div class="spec__group">
+          <h3>Engine</h3>
+          <dl>
+            <div><dt>Type</dt><dd>S58, 6-cylinder in-line, twin turbo</dd></div>
+            <div><dt>Displacement</dt><dd>2,993 cc</dd></div>
+            <div><dt>Max. output</dt><dd>510 PS at 6,250 rpm</dd></div>
+            <div><dt>Max. torque</dt><dd>650 Nm at 2,750–5,500 rpm</dd></div>
+          </dl>
+        </div>
+        <div class="spec__group">
+          <h3>Performance</h3>
+          <dl>
+            <div><dt>0–100 km/h</dt><dd>3.9 s</dd></div>
+            <div><dt>Top speed</dt><dd>250 km/h <small>(290 km/h with M Driver's Package)</small></dd></div>
+            <div><dt>Transmission</dt><dd>8-speed M Steptronic</dd></div>
+            <div><dt>Drive</dt><dd>Rear-wheel drive</dd></div>
+          </dl>
+        </div>
+        <div class="spec__group">
+          <h3>Dimensions</h3>
+          <dl>
+            <div><dt>Length</dt><dd>4,794 mm</dd></div>
+            <div><dt>Width</dt><dd>1,887 mm</dd></div>
+            <div><dt>Height</dt><dd>1,393 mm</dd></div>
+            <div><dt>Wheelbase</dt><dd>2,857 mm</dd></div>
+            <div><dt>Wheels</dt><dd>19" front / 20" rear</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMPARE ============ -->
+  <section class="cmp" id="compare">
+    <div class="wrap">
+      <div class="cmp__head">
+        <p class="kicker"><span class="kicker__n">07</span>Compare</p>
+        <h2 class="h2 h2--sm">
+          <span class="ln"><span>Choose your</span></span>
+          <span class="ln"><span class="y">M4.</span></span>
+        </h2>
+      </div>
+      <div class="cmp__grid">
+        <article class="vc">
+          <header><small>BMW</small><h3>M4 Coupé</h3></header>
+          <div class="vc__row"><span>Output</span><b>480 PS</b><i style="--v:.94"></i></div>
+          <div class="vc__row"><span>Torque</span><b>550 Nm</b><i style="--v:.85"></i></div>
+          <div class="vc__row"><span>0–100 km/h</span><b>4.2 s</b><i style="--v:.83"></i></div>
+          <ul><li>6-speed manual</li><li>Rear-wheel drive</li></ul>
+        </article>
+        <article class="vc vc--hot">
+          <span class="vc__badge">This car</span>
+          <header><small>BMW</small><h3>M4 Competition</h3></header>
+          <div class="vc__row"><span>Output</span><b>510 PS</b><i style="--v:1"></i></div>
+          <div class="vc__row"><span>Torque</span><b>650 Nm</b><i style="--v:1"></i></div>
+          <div class="vc__row"><span>0–100 km/h</span><b>3.9 s</b><i style="--v:.9"></i></div>
+          <ul><li>8-speed M Steptronic</li><li>Rear-wheel drive</li></ul>
+        </article>
+        <article class="vc">
+          <header><small>BMW</small><h3>M4 Competition xDrive</h3></header>
+          <div class="vc__row"><span>Output</span><b>510 PS</b><i style="--v:1"></i></div>
+          <div class="vc__row"><span>Torque</span><b>650 Nm</b><i style="--v:1"></i></div>
+          <div class="vc__row"><span>0–100 km/h</span><b>3.5 s</b><i style="--v:1"></i></div>
+          <ul><li>8-speed M Steptronic</li><li>M xDrive all-wheel drive</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEST DRIVE ============ -->
+  <section class="cta" id="contact">
+    <picture class="cta__media">
+      <source media="(max-width: 767px)" srcset="img/cta-m.jpg">
+      <img src="img/cta.jpg" alt="BMW M4 Competition in a dark studio" loading="lazy" width="1600" height="900">
+    </picture>
+    <div class="cta__shade"></div>
+    <div class="wrap cta__grid">
+      <div class="cta__copy">
+        <p class="kicker"><span class="kicker__n">08</span>Test drive</p>
+        <h2 class="h2">
+          <span class="ln"><span>Your M4</span></span>
+          <span class="ln"><span class="y">is waiting.</span></span>
+        </h2>
+        <p class="body rv">Book a test drive and feel the S58 for yourself. Tell us when suits you and we will confirm within one working day.</p>
+      </div>
+      <form class="td rv" id="tdForm" novalidate>
+        <div class="td__row">
+          <label class="fld"><span>Full name</span><input name="name" required autocomplete="name"></label>
+          <label class="fld"><span>Phone</span><input name="phone" type="tel" required autocomplete="tel"></label>
+        </div>
+        <label class="fld"><span>Email</span><input name="email" type="email" required autocomplete="email"></label>
+        <div class="td__row">
+          <label class="fld"><span>Preferred date</span><input name="date" type="date" required></label>
+          <label class="fld"><span>Version</span>
+            <select name="version"><option>M4 Competition</option><option>M4 Competition xDrive</option><option>M4 Coupé</option></select>
+          </label>
+        </div>
+        <button class="btn" type="submit"><span>Book test drive</span><i aria-hidden="true">&rarr;</i></button>
+        <p class="td__note" id="tdNote" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__top">
+    <a class="nav__logo" href="#top" aria-label="Back to top"><span class="stripes"><i></i><i></i><i></i></span><b>BMW</b><em>M&nbsp;FINDER</em></a>
+    <nav class="foot__links" aria-label="Footer">
+      <a href="#overview">Overview</a><a href="#performance">Performance</a><a href="#design">Design</a>
+      <a href="#colours">Colours</a><a href="#specs">Specs</a><a href="#contact">Test drive</a>
+    </nav>
+  </div>
+  <div class="foot__word" aria-hidden="true">M4 Competition</div>
+  <div class="wrap foot__bot">
+    <span>&copy; 2026 BMW M Finder. Concept website.</span>
+    <span>BMW and M are trademarks of BMW AG.</span>
+  </div>
+</footer>
+
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/hero.js?v=2"></script>
+<script src="js/sections.js?v=4"></script>
+</body>
+</html>
